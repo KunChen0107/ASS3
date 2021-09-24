@@ -252,7 +252,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e3534d6a286ccd847bdbe73e36846e52, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 97e14104a9798a94bbe9fbd62ab5155f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.512
   m_Pitch: 1
@@ -777,7 +777,7 @@ GameObject:
   - component: {fileID: 1538602752}
   - component: {fileID: 1538602751}
   m_Layer: 0
-  m_Name: BackGroundMusic
+  m_Name: IntroductionMusic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -793,11 +793,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: bc373ce4a50839a45a1c91a4faeb3cb8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f53fec72e5306ee469e8d45b2beb5c18, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1012,7 +1012,7 @@ MonoBehaviour:
   GreenController: {fileID: 1909149392}
   RedController: {fileID: 92815314}
   YellowController: {fileID: 800583845}
-  BackGround: {fileID: 1538602751}
+  IntroductionMusic: {fileID: 1538602751}
   StartMusic: {fileID: 1019915296}
   GhostInDangerMusic: {fileID: 428338137}
 --- !u!1 &1909149391

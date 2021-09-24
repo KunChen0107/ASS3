@@ -9,59 +9,39 @@ public class ChangeMusic : MonoBehaviour
     public Animator RedController;
     public Animator YellowController;
 
-    public AudioSource BackGround;
+    public AudioSource IntroductionMusic;
     public AudioSource StartMusic;
     public AudioSource GhostInDangerMusic;
-    bool GameStart=false;
     bool GhostInDanger=false;
     // Start is called before the first frame update
     void Start()
     {
+        GhostInDangerMusic.Stop();
         StartMusic.Stop();
-        BackGround.Play();
+        IntroductionMusic.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!GameStart)
+        if(!IntroductionMusic.isPlaying)
         {
-            if(Input.GetKeyDown(KeyCode.UpArrow)||Input.GetKeyDown(KeyCode.DownArrow)||Input.GetKeyDown(KeyCode.LeftArrow)||Input.GetKeyDown(KeyCode.RightArrow))
+            if(!StartMusic.isPlaying)
             {
-                BackGround.Stop();
                 StartMusic.Play();
-                GameStart=true;
-            }
-        }
-        else
-        {
-            
-            Debug.Log(BackGround.isPlaying);
-        }
-        
+            }  
+        }     
     }
 
     void ChangeMusicToGhostInDanger()
     {
         if(BlueController.GetCurrentAnimatorClipInfo(0)[0].clip.name=="BlueDangerRight"||BlueController.GetCurrentAnimatorClipInfo(0)[0].clip.name=="BlueDangerUp"||
-        BlueController.GetCurrentAnimatorClipInfo(0)[0].clip.name=="BlueDangerDown"||BlueController.GetCurrentAnimatorClipInfo(0)[0].clip.name=="BlueDangerLeft")
-        {
-            GhostInDanger=true;
-        }
-        else
-        {
-            GhostInDanger=false;
-        }  
-        if(GreenController.GetCurrentAnimatorClipInfo(0)[0].clip.name=="GreenDangerRight"||GreenController.GetCurrentAnimatorClipInfo(0)[0].clip.name=="GreenDangerUp"||
-        GreenController.GetCurrentAnimatorClipInfo(0)[0].clip.name=="GreenDangerDown"||GreenController.GetCurrentAnimatorClipInfo(0)[0].clip.name=="GreenDangerLeft")
-        {
-            GhostInDanger=true;
-        }
-        else
-        {
-            GhostInDanger=false;
-        }
-        if(RedController.GetCurrentAnimatorClipInfo(0)[0].clip.name=="RedDangerRight"||RedController.GetCurrentAnimatorClipInfo(0)[0].clip.name=="RedDangerUp"||
+        BlueController.GetCurrentAnimatorClipInfo(0)[0].clip.name=="BlueDangerDown"||BlueController.GetCurrentAnimatorClipInfo(0)[0].clip.name=="BlueDangerLeft"||
+        YellowController.GetCurrentAnimatorClipInfo(0)[0].clip.name=="YellowDangerRight"||YellowController.GetCurrentAnimatorClipInfo(0)[0].clip.name=="YellowDangerUp"||
+        YellowController.GetCurrentAnimatorClipInfo(0)[0].clip.name=="YellowDangerDown"||YellowController.GetCurrentAnimatorClipInfo(0)[0].clip.name=="YellowDangerLeft"||
+        GreenController.GetCurrentAnimatorClipInfo(0)[0].clip.name=="GreenDangerRight"||GreenController.GetCurrentAnimatorClipInfo(0)[0].clip.name=="GreenDangerUp"||
+        GreenController.GetCurrentAnimatorClipInfo(0)[0].clip.name=="GreenDangerDown"||GreenController.GetCurrentAnimatorClipInfo(0)[0].clip.name=="GreenDangerLeft"||
+        RedController.GetCurrentAnimatorClipInfo(0)[0].clip.name=="RedDangerRight"||RedController.GetCurrentAnimatorClipInfo(0)[0].clip.name=="RedDangerUp"||
         BlueController.GetCurrentAnimatorClipInfo(0)[0].clip.name=="RedDangerDown"||RedController.GetCurrentAnimatorClipInfo(0)[0].clip.name=="RedDangerLeft")
         {
             GhostInDanger=true;
@@ -69,20 +49,28 @@ public class ChangeMusic : MonoBehaviour
         else
         {
             GhostInDanger=false;
-        }
-        if(YellowController.GetCurrentAnimatorClipInfo(0)[0].clip.name=="YellowDangerRight"||YellowController.GetCurrentAnimatorClipInfo(0)[0].clip.name=="YellowDangerUp"||
-        YellowController.GetCurrentAnimatorClipInfo(0)[0].clip.name=="YellowDangerDown"||YellowController.GetCurrentAnimatorClipInfo(0)[0].clip.name=="YellowDangerLeft")
+        }  
+        if(GhostInDanger)
         {
-            GhostInDanger=true;
+            if(!GhostInDangerMusic.isPlaying)
+            {
+                StartMusic.Stop();
+                GhostInDangerMusic.Play();
+                Debug.Log("Sound Changed");
+            }
+            else
+            {
+                Debug.Log("dont need to change");
+            }  
         }
         else
         {
-            GhostInDanger=false;
-        }
-        if(GhostInDanger)
-        {
-            StartMusic.Stop();
-            GhostInDangerMusic.Play();
+            if(!StartMusic.isPlaying)
+            {
+                GhostInDangerMusic.Stop();
+                StartMusic.Play();
+                Debug.Log("Out of Danger");
+            }
         }
     }
 }
